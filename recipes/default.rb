@@ -22,7 +22,7 @@ when "ubuntu","debian"
     action :install
   end
 when "mac_os_x"
-  Chef::Log.warn("Mac OS X provides zeroconf (bonjour) out of the box, doing nothing.")
+  Chef::Log.debug("Mac OS X provides zeroconf (bonjour) out of the box, doing nothing.")
 else
   Chef::Log.error("I don't know how to setup zeroconf for your platform (#{node[:platform]})")
 end
