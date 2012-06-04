@@ -1,0 +1,1 @@
+default[:zeroconf][:domain] = ".local"

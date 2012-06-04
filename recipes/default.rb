@@ -21,6 +21,13 @@ when "ubuntu","debian"
   package 'avahi-daemon' do
     action :install
   end
+
+  template '/etc/avahi/avahi-daemon.conf' do
+    source 'avahi-daemon.conf.erb'
+    owner 'root'
+    group 'root'
+    mode 0644
+  end
 when "mac_os_x"
   Chef::Log.debug("Mac OS X provides zeroconf (bonjour) out of the box, doing nothing.")
 else
