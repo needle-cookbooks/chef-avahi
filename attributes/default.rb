@@ -1,1 +1,1 @@
-default[:avahi][:domain] = ".local"
+default[:avahi][:domain] = "local"
