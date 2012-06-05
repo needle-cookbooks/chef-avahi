@@ -45,7 +45,7 @@ when "ubuntu"
   end
 
   ark 'avahi-aliases' do
-    url 'https://github.com/ahawthorne/avahi-aliases/tarball/master'
+    url 'https://github.com/needle-cookbooks/avahi-aliases/tarball/master'
     extension 'tar.gz'
     path '/tmp/'
     action :put
