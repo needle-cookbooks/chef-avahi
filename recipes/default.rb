@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: zeroconf
+# Cookbook Name:: avahi
 # Recipe:: default
 #
 # Copyright 2012, Needle, Inc.
@@ -50,5 +50,5 @@ when "ubuntu"
   end
 
 else
-  Chef::Log.error("I don't know how to setup zeroconf for your platform (#{node[:platform]})")
+  Chef::Log.error("Your platform (#{node[:platform]}) is not supported.")
 end

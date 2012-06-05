@@ -22,7 +22,7 @@
 
 [server]
 #host-name=foo
-domain-name=<%= node[:zeroconf][:domain] %>
+domain-name=<%= node[:avahi][:domain] %>
 #browse-domains=0pointer.de, zeroconf.org
 use-ipv4=yes
 use-ipv6=yes

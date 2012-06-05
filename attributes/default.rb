@@ -1,1 +1,1 @@
-default[:zeroconf][:domain] = ".local"
+default[:avahi][:domain] = ".local"
