@@ -35,6 +35,7 @@ when "ubuntu"
   %w{ python-dbus python-avahi }.each do |pkg|
     package pkg
   end
+
   execute 'install-avahi-aliases' do
     command "/tmp/avahi-aliases/install.sh"
     action :nothing
@@ -42,6 +43,7 @@ when "ubuntu"
 
   ark 'avahi-aliases' do
     url 'https://github.com/ahawthorne/avahi-aliases/tarball/master'
+    extension 'tar.gz'
     path '/tmp/'
     action :put
     notifies :run, "execute[install-avahi-aliases]", :immediately
