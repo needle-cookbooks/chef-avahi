@@ -16,8 +16,10 @@
 # limitations under the License.
 #
 
+include_recipe 'ark'
+
 case node[:platform]
-when "ubuntu","debian"
+when "ubuntu"
   package 'avahi-daemon' do
     action :install
   end
@@ -28,8 +30,19 @@ when "ubuntu","debian"
     group 'root'
     mode 0644
   end
-when "mac_os_x"
-  Chef::Log.debug("Mac OS X provides zeroconf (bonjour) out of the box, doing nothing.")
+
+  execute 'install-avahi-aliases' do
+    command "/tmp/avahi-aliases/install.sh"
+    action :nothing
+  end
+
+  ark 'avahi-aliases' do
+    url 'https://github.com/ahawthorne/avahi-aliases/tarball/master'
+    path '/tmp/'
+    action :put
+    notifies :run, "execute[install-avahi-aliases]", :immediately
+  end
+
 else
   Chef::Log.error("I don't know how to setup zeroconf for your platform (#{node[:platform]})")
 end
