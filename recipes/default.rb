@@ -20,6 +20,7 @@ include_recipe 'ark'
 
 case node[:platform]
 when "ubuntu"
+
   package 'avahi-daemon' do
     action :install
   end
@@ -31,6 +32,9 @@ when "ubuntu"
     mode 0644
   end
 
+  %w{ python-dbus python-avahi }.each do |pkg|
+    package pkg
+  end
   execute 'install-avahi-aliases' do
     command "/tmp/avahi-aliases/install.sh"
     action :nothing
