@@ -16,8 +16,6 @@
 # limitations under the License.
 #
 
-include_recipe 'ark'
-
 case node[:platform]
 when "ubuntu"
 
@@ -34,18 +32,16 @@ when "ubuntu"
   end
 
   bash 'install-avahi-aliases' do
-    cwd '/tmp/avahi-aliases'
+    cwd '/usr/src/avahi-aliases'
     code <<-EOH
       ./install.sh
     EOH
     action :nothing
   end
 
-  ark 'avahi-aliases' do
-    url 'https://github.com/needle-cookbooks/avahi-aliases/tarball/master'
-    extension 'tar.gz'
-    path '/tmp/'
-    action :put
+  git '/usr/src/avahi-aliases' do
+    url 'https://github.com/needle-cookbooks/avahi-aliases.git'
+    action :checkout
     notifies :run, "bash[install-avahi-aliases]", :immediately
   end
 
