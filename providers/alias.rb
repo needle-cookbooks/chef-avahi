@@ -10,7 +10,7 @@ action :add do
   file ::File.join('/etc/avahi/aliases.d',new_resource.name) do
     content new_resource.name
     action :create
-    notifies :run, "bash[avahi-publish-alias-#{new_resource.name}]"
+    notifies :run, resources(:bash => "avahi-publish-alias-#{new_resource.name}")
   end
 
 end
