@@ -40,7 +40,7 @@ when "ubuntu"
   end
 
   git '/usr/src/avahi-aliases' do
-    url 'https://github.com/needle-cookbooks/avahi-aliases.git'
+    repo 'https://github.com/needle-cookbooks/avahi-aliases.git'
     action :checkout
     notifies :run, "bash[install-avahi-aliases]", :immediately
   end
