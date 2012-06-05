@@ -36,8 +36,11 @@ when "ubuntu"
     package pkg
   end
 
-  execute 'install-avahi-aliases' do
-    command "/tmp/avahi-aliases/install.sh"
+  bash 'install-avahi-aliases' do
+    cwd '/tmp/avahi-aliases'
+    code <<-EOH
+      ./install.sh
+    EOH
     action :nothing
   end
 
@@ -46,7 +49,7 @@ when "ubuntu"
     extension 'tar.gz'
     path '/tmp/'
     action :put
-    notifies :run, "execute[install-avahi-aliases]", :immediately
+    notifies :run, "bash[install-avahi-aliases]", :immediately
   end
 
 else
