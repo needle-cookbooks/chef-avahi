@@ -25,11 +25,8 @@ when "ubuntu"
     action :install
   end
 
-  template '/etc/avahi/avahi-daemon.conf' do
-    source 'avahi-daemon.conf.erb'
-    owner 'root'
-    group 'root'
-    mode 0644
+  service 'avahi-daemon' do
+    action [ :enable, :start ]
   end
 
   %w{ python-dbus python-avahi }.each do |pkg|
@@ -50,6 +47,22 @@ when "ubuntu"
     path '/tmp/'
     action :put
     notifies :run, "bash[install-avahi-aliases]", :immediately
+  end
+
+  bash 'avahi-publish-aliases' do
+    code <<-EOH
+      /usr/bin/avahi-publish-aliases
+    EOH
+    action :nothing
+  end
+
+  template '/etc/avahi/avahi-daemon.conf' do
+    source 'avahi-daemon.conf.erb'
+    owner 'root'
+    group 'root'
+    mode 0644
+    notifies :run, "bash[avahi-publish-aliases]", :immediately
+    notifies :restart, "service[avahi-daemon]", :delayed
   end
 
 else
