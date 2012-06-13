@@ -24,7 +24,9 @@ when "ubuntu"
   end
 
   service 'avahi-daemon' do
-    action [ :enable, :start ]
+    action :start
+    provider Chef::Provider::Service::Upstart
+    supports :restart => false
   end
 
   %w{ python-dbus python-avahi }.each do |pkg|
