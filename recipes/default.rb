@@ -16,6 +16,8 @@
 # limitations under the License.
 #
 
+include_recipe "git"
+
 case node[:platform]
 when "ubuntu"
 
