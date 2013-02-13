@@ -1,3 +1,4 @@
+name             "avahi"
 maintainer       "Cameron Johnston"
 maintainer_email "cameron@needle.com"
 license          "Apache 2.0"
