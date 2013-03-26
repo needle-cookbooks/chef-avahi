@@ -65,6 +65,19 @@ when "ubuntu"
     notifies :restart, "service[avahi-daemon]", :delayed
   end
 
+  # the purpose of this upstart 'service' is to publish any aliases at boot
+  cookbook_file '/etc/init/avahi-publish-aliases.conf' do
+    source 'upstart-avahi-publish-aliases'
+    mode '0644'
+    owner 'root'
+    group 'root'
+  end
+
+  service 'avahi-publish-aliases' do
+    provider Chef::Provider::Service::Upstart
+    action [:enable]
+  end
+
 else
   Chef::Log.error("Your platform (#{node[:platform]}) is not supported.")
 end
