@@ -1,0 +1,4 @@
+start on started avahi-daemon
+script
+    /usr/bin/avahi-publish-aliases
+end script
