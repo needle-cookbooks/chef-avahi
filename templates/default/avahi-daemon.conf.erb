@@ -24,8 +24,8 @@
 #host-name=foo
 domain-name=<%= node[:avahi][:domain] %>
 #browse-domains=0pointer.de, zeroconf.org
-use-ipv4=yes
-use-ipv6=yes
+use-ipv4=<%= node[:avahi][:use_ipv4] ? 'yes' : 'no' %>
+use-ipv6=<%= node[:avahi][:use_ipv6] ? 'yes' : 'no' %>
 <%- unless node[:avahi][:allow_interfaces].empty? -%>
 allow-interfaces=<%= node[:avahi][:allow_interfaces].join(',') %>
 <%- end -%>
