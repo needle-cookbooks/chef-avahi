@@ -1,0 +1,32 @@
+{
+  "sha": "635726c360842776bf61a5e44e8ad78dfdb643aa",
+  "sources": {
+    "avahi": {
+      "path": "."
+    },
+    "avahi_test": {
+      "path": "./test/cookbooks/avahi_test"
+    },
+    "git": {
+      "locked_version": "2.5.2"
+    },
+    "dmg": {
+      "locked_version": "1.1.0"
+    },
+    "build-essential": {
+      "locked_version": "1.4.0"
+    },
+    "yum": {
+      "locked_version": "2.3.0"
+    },
+    "windows": {
+      "locked_version": "1.10.0"
+    },
+    "chef_handler": {
+      "locked_version": "1.1.4"
+    },
+    "runit": {
+      "locked_version": "1.1.6"
+    }
+  }
+}
