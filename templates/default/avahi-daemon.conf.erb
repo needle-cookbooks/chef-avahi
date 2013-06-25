@@ -21,7 +21,9 @@
 # This file dropped off by Chef! Your changes will be overwritten!
 
 [server]
-#host-name=foo
+<%- if node[:avahi][:hostname] -%>
+host-name=<%= node[:avahi][:hostname] %>
+<%- end -%>
 domain-name=<%= node[:avahi][:domain] %>
 #browse-domains=0pointer.de, zeroconf.org
 use-ipv4=<%= node[:avahi][:use_ipv4] ? 'yes' : 'no' %>

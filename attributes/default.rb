@@ -1,3 +1,4 @@
+default[:avahi][:hostname] = nil
 default[:avahi][:domain] = "local"
 default[:avahi][:use_ipv4] = true
 default[:avahi][:use_ipv6] = true
