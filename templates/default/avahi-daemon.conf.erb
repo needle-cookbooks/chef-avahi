@@ -26,8 +26,12 @@ domain-name=<%= node[:avahi][:domain] %>
 #browse-domains=0pointer.de, zeroconf.org
 use-ipv4=yes
 use-ipv6=yes
-#allow-interfaces=eth0
-#deny-interfaces=eth1
+<%- unless node[:avahi][:allow_interfaces].empty? -%>
+allow-interfaces=<%= node[:avahi][:allow_interfaces].join(',') %>
+<%- end -%>
+<%- unless node[:avahi][:deny_interfaces].empty? -%>
+deny-interfaces=<%= node[:avahi][:deny_interfaces].join(',') %>
+<%- end -%>
 #check-response-ttl=no
 #use-iff-running=no
 #enable-dbus=yes
