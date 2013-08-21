@@ -3,6 +3,7 @@
 require 'bundler'
 require 'bundler/setup'
 require 'berkshelf/thor'
+require 'emeril/thor'
 
 begin
   require 'kitchen/thor_tasks'
